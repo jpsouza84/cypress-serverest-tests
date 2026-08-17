@@ -83,7 +83,7 @@ Antes de executar o projeto, é necessário possuir:
 Clone o repositório:
 
 ```bash
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/jpsouza84/cypress-serverest-tests.git
 ```
 
 Entre na pasta do projeto:
