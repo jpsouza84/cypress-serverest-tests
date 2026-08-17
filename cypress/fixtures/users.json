@@ -1,0 +1,30 @@
+{
+  "frontendUser": {
+    "nome": "Frontend User",
+    "emailPrefix": "frontend",
+    "password": "Test@123",
+    "administrador": "false"
+  },
+  "logoutUser": {
+    "nome": "Logout User",
+    "emailPrefix": "logout",
+    "password": "Test@123",
+    "administrador": "false"
+  },
+  "apiUser": {
+    "nome": "QA Test",
+    "emailPrefix": "qa",
+    "password": "Test@123",
+    "administrador": "true"
+  },
+  "duplicateUser": {
+    "nome": "Duplicate User",
+    "emailPrefix": "duplicate",
+    "password": "Test@123",
+    "administrador": "true"
+  },
+  "invalidCredentials": {
+    "email": "invalid@test.com",
+    "password": "invalidPassword"
+  }
+}

@@ -1,10 +1,20 @@
 describe("Users API", () => {
+  let users;
+
+  before(() => {
+    cy.fixture("users").then((data) => {
+      users = data;
+    });
+  });
+
   it("should create a new user", () => {
+    const userData = users.apiUser;
+
     const user = {
-      nome: "QA Test",
-      email: `qa_${Date.now()}@test.com`,
-      password: "Test@123",
-      administrador: "true",
+      nome: userData.nome,
+      email: `${userData.emailPrefix}_${Date.now()}@test.com`,
+      password: userData.password,
+      administrador: userData.administrador,
     };
 
     cy.createUser(user).then((response) => {
@@ -25,11 +35,13 @@ describe("Users API", () => {
   });
 
   it("should not create a user with an existing email", () => {
+    const userData = users.duplicateUser;
+
     const user = {
-      nome: "Duplicate User",
-      email: `duplicate_${Date.now()}@test.com`,
-      password: "Test@123",
-      administrador: "true",
+      nome: userData.nome,
+      email: `${userData.emailPrefix}_${Date.now()}@test.com`,
+      password: userData.password,
+      administrador: userData.administrador,
     };
 
     cy.createUser(user).then((firstResponse) => {

@@ -39,6 +39,8 @@ cypress/
 │   ├── API/
 │   │   └── users.cy.js
 │   └── frontend.cy.js
+├── fixtures/
+│   └── users.json
 ├── pages/
 │   └── loginPage.js
 ├── services/
@@ -59,6 +61,7 @@ O projeto utiliza os seguintes padrões e práticas:
 - **Page Object:** encapsula os seletores e as ações da página de login.
 - **Service Object:** centraliza as requisições realizadas para a API.
 - **Custom Commands:** disponibiliza comandos reutilizáveis, como `cy.login()`, `cy.createUser()` e `cy.getUsers()`.
+- **Fixtures:** armazenam e centralizam as massas de dados utilizadas nos testes de frontend e API.
 - **Testes independentes:** cada cenário prepara os próprios dados necessários.
 - **Seletores estáveis:** utilização de atributos `data-testid` nas interações com o frontend.
 - **Dados dinâmicos:** geração de e-mails únicos com `Date.now()`, evitando conflitos entre execuções.

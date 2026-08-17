@@ -1,10 +1,20 @@
 describe("Login Frontend", () => {
+  let users;
+
+  before(() => {
+    cy.fixture("users").then((data) => {
+      users = data;
+    });
+  });
+
   it("should log in successfully", () => {
+    const userData = users.frontendUser;
+
     const user = {
-      nome: "Frontend User",
-      email: `frontend_${Date.now()}@test.com`,
-      password: "Test@123",
-      administrador: "false",
+      nome: userData.nome,
+      email: `${userData.emailPrefix}_${Date.now()}@test.com`,
+      password: userData.password,
+      administrador: userData.administrador,
     };
 
     cy.createUser(user).then((response) => {
@@ -17,18 +27,22 @@ describe("Login Frontend", () => {
   });
 
   it("should display an error for invalid credentials", () => {
-    cy.login("invalid@test.com", "invalidPassword");
+    const credentials = users.invalidCredentials;
+
+    cy.login(credentials.email, credentials.password);
 
     cy.contains("Email e/ou senha inválidos").should("be.visible");
     cy.url().should("include", "/login");
   });
 
   it("should log out successfully", () => {
+    const userData = users.logoutUser;
+
     const user = {
-      nome: "Logout User",
-      email: `logout_${Date.now()}@test.com`,
-      password: "Test@123",
-      administrador: "false",
+      nome: userData.nome,
+      email: `${userData.emailPrefix}_${Date.now()}@test.com`,
+      password: userData.password,
+      administrador: userData.administrador,
     };
 
     cy.createUser(user).then((response) => {
