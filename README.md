@@ -2,13 +2,6 @@
 
 Projeto desenvolvido como desafio técnico de QA, contendo testes automatizados E2E para o frontend e testes automatizados para a API da aplicação ServeRest.
 
-## Tecnologias utilizadas
-
-- Cypress
-- JavaScript
-- Node.js
-- Git
-- GitHub Actions
 
 ## Aplicações testadas
 
@@ -73,13 +66,6 @@ Os cenários de login criam previamente os usuários pela API. Essa abordagem re
 
 Os testes cobrem fluxos positivos e negativos, incluindo autenticação válida, credenciais inválidas e tentativa de cadastro com e-mail duplicado.
 
-## Pré-requisitos
-
-Antes de executar o projeto, é necessário possuir:
-
-- Node.js
-- npm
-- Git
 
 ## Instalação
 
@@ -101,32 +87,6 @@ Instale as dependências:
 npm ci
 ```
 
-## Execução dos testes
-
-### Modo interativo
-
-```bash
-npx cypress open
-```
-
-### Modo headless
-
-```bash
-npx cypress run
-```
-
-### Somente os testes de frontend
-
-```bash
-npx cypress run --spec "cypress/e2e/frontend.cy.js"
-```
-
-### Somente os testes de API
-
-```bash
-npx cypress run --spec "cypress/e2e/API/users.cy.js"
-```
-
 ## Integração contínua
 
 O projeto possui um workflow do GitHub Actions que:
@@ -134,7 +94,7 @@ O projeto possui um workflow do GitHub Actions que:
 1. Baixa o código do repositório
 2. Configura o Node.js
 3. Instala as dependências com `npm ci`
-4. Executa todos os testes em modo headless
+4. Executa todos os testes no Chrome em modo headless
 5. Armazena screenshots como artefatos em caso de falha
 
 O workflow é executado automaticamente em pushes e pull requests direcionados à branch `main`.
