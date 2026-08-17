@@ -1,7 +1,3 @@
-
-import loginPage from "../pages/loginPage";
-import userService from "../services/userService";
-
 describe("Login Frontend", () => {
   it("should log in successfully", () => {
     const user = {
@@ -11,19 +7,17 @@ describe("Login Frontend", () => {
       administrador: "false",
     };
 
-    userService.createUser(user).then((response) => {
+    cy.createUser(user).then((response) => {
       expect(response.status).to.eq(201);
 
-      loginPage.visit();
-      loginPage.login(user.email, user.password);
+      cy.login(user.email, user.password);
 
       cy.get('[data-testid="logout"]').should("be.visible");
     });
   });
 
   it("should display an error for invalid credentials", () => {
-    loginPage.visit();
-    loginPage.login("invalid@test.com", "invalidPassword");
+    cy.login("invalid@test.com", "invalidPassword");
 
     cy.contains("Email e/ou senha inválidos").should("be.visible");
     cy.url().should("include", "/login");
@@ -37,11 +31,10 @@ describe("Login Frontend", () => {
       administrador: "false",
     };
 
-    userService.createUser(user).then((response) => {
+    cy.createUser(user).then((response) => {
       expect(response.status).to.eq(201);
 
-      loginPage.visit();
-      loginPage.login(user.email, user.password);
+      cy.login(user.email, user.password);
 
       cy.get('[data-testid="logout"]').should("be.visible").click();
 
